@@ -20,7 +20,7 @@ mongoose
         console.log(err);
 })
 
-
+app.use('/api/auth', require('./routes/auth'));
 
 const port = process.env.PORT || 3002;
 
