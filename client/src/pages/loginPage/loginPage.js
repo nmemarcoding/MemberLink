@@ -27,7 +27,7 @@ export default function LoginPage() {
         console.log(response);
         alert('Logged in successfully');
         addUserInfo(response.data);
-        navigate('/dashboard');
+        navigate('/');
       })
       .catch((error) => {
         console.log(error);
