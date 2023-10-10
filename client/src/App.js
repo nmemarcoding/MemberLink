@@ -3,6 +3,7 @@ import SignupPage from './pages/signupPage/signupPage';
 import LoginPage from './pages/loginPage/loginPage';
 import HomePage from './pages/homePage/homePage';
 import MembershipPage from './pages/membershipPage/membershipPage';
+import CheckinHistoryPage from './pages/checkinHistoryPage/checkinHistoryPage';
 function App() {
 
   
@@ -18,6 +19,7 @@ function App() {
               <Route path="/login" element={<LoginPage/>}/>
               <Route path="/" element={<HomePage/>}/>
               <Route path="/membership" element={<MembershipPage/>}/>
+              <Route path="/checkinhistory" element={<CheckinHistoryPage/>}/>
             </Routes>
           </div>
         </Router>
