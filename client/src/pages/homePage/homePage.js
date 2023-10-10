@@ -1,7 +1,9 @@
-import React from 'react'
+import { useEffect } from 'react';
 import Navbar from '../../components/navbar';
+import useAuthRedirect from '../../hooks/useAuthRedirect';
 
-export default function homePage() {
+export default function HomePage() {
+    useAuthRedirect();
   return (
     <div><Navbar/></div>
   )

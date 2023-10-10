@@ -8,6 +8,8 @@ const Navbar = () => {
 
     const handleSignOut = () => {
         deleteUserInfo();
+        // reload the page
+        window.location.reload();
     }
     const toggleMenu = () => {
         setIsOpen(!isOpen);
