@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // import Link component
 import store from '../store';
 import useStore from '../store';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const userInfo = store.getState().userInf;
@@ -21,7 +23,7 @@ const Navbar = () => {
                 <div className="text-2xl font-extrabold">MEMBER LINK</div>
                 <div className="hidden md:flex space-x-5 items-center">
                     <span className="text-lg font-medium">Hi,{userInfo.firstName}</span>
-                    <button className="text-lg font-medium">Membership</button>
+                    <Link to="/membership" className="text-lg font-medium">Membership</Link> {/* wrap in Link component */}
                     <button onClick={handleSignOut} className="bg-red-600 px-5 py-2 rounded-full hover:bg-red-700 transition duration-300 text-lg font-medium">Sign Out</button>
                 </div>
                 <div className="md:hidden flex items-center">
@@ -35,7 +37,7 @@ const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden flex flex-col space-y-4 mt-5">
                     <span className="text-lg font-medium">Hi,{userInfo.firstName}</span>
-                    <span className="text-lg font-medium">Membership</span>
+                    <Link to="/membership" className="text-lg font-medium">Membership</Link> {/* wrap in Link component */}
                     <button onClick={handleSignOut} className="bg-red-600 px-5 py-2 rounded-full hover:bg-red-700 transition duration-300 text-lg font-medium">Sign Out</button>
                 </div>
             )}
