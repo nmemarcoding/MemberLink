@@ -38,6 +38,7 @@ export default function SignupPage() {
       .then((response) => {
         console.log(response);
         alert('Account created successfully');
+        
         navigate('/login');
       })
       .catch((error) => {

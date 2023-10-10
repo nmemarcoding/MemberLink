@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { publicRequest } from '../../hooks/requestMethods';
 import { useNavigate } from 'react-router-dom';
-
+import useStore from '../../store';
 export default function LoginPage() {
+  const addUserInfo = useStore((state) => state.addUserInfo);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -25,6 +26,7 @@ export default function LoginPage() {
       .then((response) => {
         console.log(response);
         alert('Logged in successfully');
+        addUserInfo(response.data);
         navigate('/dashboard');
       })
       .catch((error) => {
