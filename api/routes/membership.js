@@ -39,8 +39,10 @@ router.get("/", async(req, res) => {
 router.get("/:id", async(req, res) => {
     try {
         const user = await User.findById(req.params.id).populate('planId');
-        res.status(200).json(user.planId);
-        console.log(user.planId)
+        // sending user.planID and user.membershipExpiration not full user info
+        const dataToSend = {...user.planId._doc, membershipExpiration: user.membershipExpiration}
+        res.status(200).json(dataToSend);
+        console.log(dataToSend)
     } catch (err) {
         res.status(500).json(err);
     }
