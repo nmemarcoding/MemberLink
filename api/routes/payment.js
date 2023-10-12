@@ -42,11 +42,11 @@ router.post('/create', async(req, res) => {
     const expirationDate = Date.now() + (plan.expiration*24*60*60*1000);
     user.membershipExpiration = new Date(expirationDate);
     // if user memershipExpiration is not less than current time you cant creat payment
-    
+    user.planId = req.body.planId;
 
     
     try {
-       
+        
         await user.save();
         // save payment
         const savedPayment = await newPayment.save();

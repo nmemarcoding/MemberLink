@@ -38,8 +38,9 @@ router.get("/", async(req, res) => {
 // get user membership by user id
 router.get("/:id", async(req, res) => {
     try {
-        const user = await User.findById(req.params.id);
-        res.status(200).json(user.membershipExpiration);
+        const user = await User.findById(req.params.id).populate('planId');
+        res.status(200).json(user.planId);
+        console.log(user.planId)
     } catch (err) {
         res.status(500).json(err);
     }

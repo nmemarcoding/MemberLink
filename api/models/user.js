@@ -46,7 +46,13 @@ const userSchema = new mongoose.Schema({
     membershipNumber: {
         type: Number,
         unique: true
-    }
+    },
+    planId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'MembershipPlan',
+        default: null
+    },
+    
 }, { timestamps: true });
 
 userSchema.pre('save', async function(next) {
