@@ -8,48 +8,32 @@ export default function MembershipPage() {
     useAuthRedirect();
     const userInfo = store.getState().userInf;
     const [membershipExpiration, setMembershipExpiration] = useState();
+    const [planName, setPlanName] = useState();
     const [selectedPlan, setSelectedPlan] = useState();
+    const [membershipDetails, setMembershipDetails] = useState([]);
     // fetch membership expiration date from database
-    publicRequest().get(`/membership/${userInfo._id}`)
-        .then((response) => {
-            setMembershipExpiration(response.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+    useEffect(() => {
+        publicRequest().get(`/membership/${userInfo._id}`)
+            .then((response) => {
+                setMembershipExpiration(response.data.membershipExpiration);
+                console.log(response.data)
+                setPlanName(response.data.name);
+            }
+            )
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
 
     // Replace these with actual user data
-    const [membershipDetails, setMembershipDetails] = useState([
-        {
-            id: 1,
-            name: 'Basic',
-            price: 10,
-            expirationDate: '2022-12-31',
-            // Add any other membership details here
-        },
-        {
-            id: 2,
-            name: 'Premium',
-            price: 20,
-            expirationDate: '2024-12-31',
-            // Add any other membership details here
-        },
-        {
-            id: 3,
-            name: 'Gold',
-            price: 30,
-            expirationDate: '2023-12-31',
-            // Add any other membership details here
-        }
-    ]);
-
     
 
     useEffect(() => {
         publicRequest().get('/membership')
                 .then((response) => {
                     setMembershipDetails(response.data);
-                    
+                    console.log(response.data)
                 })
                 .catch((error) => {
                     console.log(error);
@@ -99,7 +83,7 @@ export default function MembershipPage() {
                     <p className="text-xl font-medium mb-4">Status: <span className={status === 'Active' ? 'text-green-500' : 'text-red-500'}>{status}</span></p>
                     {status === 'Active' ? (
                         <>
-                            <p className="text-xl font-medium mb-4">Membership Plan: <span className="text-gray-600">{membershipDetails[0].name}</span></p>
+                            <p className="text-xl font-medium mb-4">Membership Plan: <span className="text-gray-600">{planName}</span></p>
                             <p className="text-xl font-medium mb-4">Expiration Date: <span className="text-gray-600">{new Date(membershipExpiration).toLocaleDateString()}</span></p>
                             {/* Add any other membership details here */}
                         </>
@@ -108,8 +92,9 @@ export default function MembershipPage() {
                             <p className="text-xl font-medium mb-4">Your membership has expired. Please select a new plan:</p>
                             <div className="flex flex-col space-y-4">
                                 {membershipDetails.map((membership) => (
-                                    <div key={membership._id} className={`bg-gray-200 rounded-lg p-4 flex items-center justify-between cursor-pointer hover:bg-gray-300 transition duration-200 ease-in-out ${selectedPlan === membership._id ? 'bg-blue-200' : ''}`} onClick={() => handleSelectMembership(membership)}>
+                                    <div key={membership._id} className={`bg-gray-200 rounded-lg p-4 flex items-center justify-between cursor-pointer hover:bg-gray-300 transition duration-200 ease-in-out ${selectedPlan === membership._id ? 'bg-green-300' : ''}`} onClick={() => handleSelectMembership(membership)}>
                                         <div>
+                                            
                                             <p className="text-lg font-medium">{membership.name}</p>
                                             <p className="text-gray-600">${membership.price} / month</p>
                                         </div>
