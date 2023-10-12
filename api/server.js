@@ -22,6 +22,7 @@ mongoose
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/membership', require('./routes/membership'));
+app.use('/api/payment', require('./routes/payment'));
 
 const port = process.env.PORT || 3002;
 
