@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const MembershipPlan = require("../models/membershipPlan.js");
-
+const User = require("../models/user.js");
 
 // creat membership plan
 
@@ -30,6 +30,16 @@ router.get("/", async(req, res) => {
     try {
         const membershipPlans = await MembershipPlan.find();
         res.status(200).json(membershipPlans);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// get user membership by user id
+router.get("/:id", async(req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.status(200).json(user.membershipExpiration);
     } catch (err) {
         res.status(500).json(err);
     }
