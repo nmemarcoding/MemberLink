@@ -4,6 +4,7 @@ import LoginPage from './pages/loginPage/loginPage';
 import HomePage from './pages/homePage/homePage';
 import MembershipPage from './pages/membershipPage/membershipPage';
 import CheckinHistoryPage from './pages/checkinHistoryPage/checkinHistoryPage';
+import AdminMemberCheckInPage from './pages/adminMemberCheckInPage/adminMemberCheckInPage';
 function App() {
 
   
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<HomePage/>}/>
               <Route path="/membership" element={<MembershipPage/>}/>
               <Route path="/checkinhistory" element={<CheckinHistoryPage/>}/>
+              <Route path="/adminmembercheckin" element={<AdminMemberCheckInPage/>}/>
             </Routes>
           </div>
         </Router>
