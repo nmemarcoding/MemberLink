@@ -10,6 +10,10 @@ router.post('/', async (req, res) => {
     }
 
     try {
+        // check that membership number is numeric if provided
+        if (req.body.membershipNumber && !/^\d+$/.test(req.body.membershipNumber)) {
+            return res.status(400).send('Membership number must be numeric.');
+        }
         // Find user with phone number or membership number
         const user = await User.findOne({
             $or: [{ phoneNumber: req.body.phoneNumber }, { membershipNumber: req.body.membershipNumber }]
