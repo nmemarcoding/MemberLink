@@ -42,11 +42,13 @@ export default function MembershipPage() {
     
     const today = new Date();
     const expiration = new Date(membershipExpiration);
-    let status = 'Active';
+    let status = 'N/A';
   
         if (expiration < today) {
      
             status = 'Expired';
+        }else if (expiration > today){
+            status = 'Active';
         }
 
 
@@ -81,7 +83,7 @@ export default function MembershipPage() {
                 <h1 className="text-4xl font-semibold text-gray-900 mb-10">Membership Details</h1>
                 <div className="bg-white rounded-xl shadow-xl p-6 md:w-1/2 mx-auto">
                     <p className="text-xl font-medium mb-4">Status: <span className={status === 'Active' ? 'text-green-500' : 'text-red-500'}>{status}</span></p>
-                    {status === 'Active' ? (
+                    {status === 'Active'  ? (
                         <>
                             <p className="text-xl font-medium mb-4">Membership Plan: <span className="text-gray-600">{planName}</span></p>
                             <p className="text-xl font-medium mb-4">Expiration Date: <span className="text-gray-600">{new Date(membershipExpiration).toLocaleDateString()}</span></p>
