@@ -1,24 +1,50 @@
 import React, { useState } from 'react';
 import adminAuth from '../../hooks/adminAuth';
 import AdminNavbar from '../../components/adminNavbar/adminNavbar';
+import { publicRequest } from '../../hooks/requestMethods.js';
 
 export default function AdminMemberCheckInPage() {
     adminAuth();
 
     const [membershipNumber, setMembershipNumber] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [userInfo, setUserInfo] = useState(null);
 
     const handleMembershipNumberChange = (event) => {
         setMembershipNumber(event.target.value);
+        console.log(membershipNumber);
     };
 
     const handlePhoneNumberChange = (event) => {
         setPhoneNumber(event.target.value);
+        console.log(phoneNumber);
     };
 
     const handleCheckInSubmit = (event) => {
         event.preventDefault();
-        // TODO: Implement check-in logic using membershipNumber or phoneNumber
+
+        if (membershipNumber === '' && phoneNumber === '') {
+            alert('Please fill out membership number or phone number');
+            return;
+        }
+
+        publicRequest().post('/checkin', { membershipNumber, phoneNumber })
+            .then((response) => {
+                console.log(response);
+                alert('Checked in successfully');
+                setMembershipNumber('');
+                setPhoneNumber('');
+                setUserInfo(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert(error.response.data || 'An error occurred');
+            });
+
+    };
+
+    const handleClosePopup = () => {
+        setUserInfo(null);
     };
 
     return (
@@ -52,6 +78,17 @@ export default function AdminMemberCheckInPage() {
                     </div>
                 </form>
             </div>
+            {userInfo && (
+                <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-lg">
+                        <h2 className="text-2xl font-semibold mb-4">User Info</h2>
+                        <p><strong>Name:</strong> {userInfo.firstName} {userInfo.lastName}</p>
+                        <p><strong>Membership Number:</strong> {userInfo.membershipNumber}</p>
+                        <p><strong>Phone Number:</strong> {userInfo.phoneNumber}</p>
+                        <button onClick={handleClosePopup} className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600 mt-4">Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
