@@ -41,7 +41,7 @@ export default function AdminNavbar() {
                             <a href="/admindashboard" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
                                 Dashboard
                             </a>
-                            <a href="#" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
+                            <a href="/adminmembercheckin" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
                                 Member Check-In
                             </a>
                             <button onClick={handleSignOut} className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
@@ -58,7 +58,7 @@ export default function AdminNavbar() {
                         <a href="/admindashboard" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
                             Dashboard
                         </a>
-                        <a href="#" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
+                        <a href="/adminmembercheckin" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
                             Member Check-In
                         </a>
                         <button onClick={handleSignOut} className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
