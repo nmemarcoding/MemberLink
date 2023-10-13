@@ -27,7 +27,13 @@ export default function LoginPage() {
         console.log(response);
         alert('Logged in successfully');
         addUserInfo(response.data);
-        navigate('/');
+        if(response.data.isAdmin === true){
+          navigate('/admindashboard');
+          
+        }else{
+          navigate('/');
+        }
+        
       })
       .catch((error) => {
         console.log(error);

@@ -38,7 +38,7 @@ export default function AdminNavbar() {
                     {/* Main Menu */}
                     <div className="hidden sm:flex sm:items-center sm:ml-6">
                         <div className="flex space-x-4">
-                            <a href="#" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
+                            <a href="/admindashboard" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
                                 Dashboard
                             </a>
                             <a href="#" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
@@ -55,7 +55,7 @@ export default function AdminNavbar() {
             {isOpen && (
                 <div className="sm:hidden" id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1">
-                        <a href="#" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
+                        <a href="/admindashboard" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
                             Dashboard
                         </a>
                         <a href="#" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
