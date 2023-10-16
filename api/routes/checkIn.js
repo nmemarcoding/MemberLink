@@ -67,4 +67,15 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// gett all the checkins
+router.get('/', async (req, res) => {
+    
+    try {
+        const checkIns = await CheckIn.find();
+        res.status(200).json(checkIns);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 module.exports = router;
