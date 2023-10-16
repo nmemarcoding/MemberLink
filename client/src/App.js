@@ -6,6 +6,7 @@ import MembershipPage from './pages/membershipPage/membershipPage';
 import CheckinHistoryPage from './pages/checkinHistoryPage/checkinHistoryPage';
 import AdminMemberCheckInPage from './pages/adminMemberCheckInPage/adminMemberCheckInPage';
 import AdminDashboardPage from './pages/adminDashboardPage/adminDashboardPage';
+import AdminCheckinHistoryPage from './pages/adminCheckinHistoryPage/adminCheckinHistoryPage';
 function App() {
 
   
@@ -24,6 +25,7 @@ function App() {
               <Route path="/checkinhistory" element={<CheckinHistoryPage/>}/>
               <Route path="/adminmembercheckin" element={<AdminMemberCheckInPage/>}/>
               <Route path="/admindashboard" element={<AdminDashboardPage/>}/>
+              <Route path="/admincheckinhistory" element={<AdminCheckinHistoryPage/>}/>
             </Routes>
           </div>
         </Router>
