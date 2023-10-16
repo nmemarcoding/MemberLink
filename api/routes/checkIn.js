@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const { mongo } = require("mongoose");
 const CheckIn = require('../models/checkIn');
 const User = require('../models/user');
+const mongoose = require('mongoose');
 
 // Route to check a member in
 router.post('/', async (req, res) => {
@@ -48,4 +50,21 @@ router.post('/', async (req, res) => {
     }
 });
 
+// gett all the user checkins by user id
+router.get('/:id', async (req, res) => {
+    if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+        return res.status(400).send('Invalid id');
+    }
+    const user = await User.findById(req.params.id);
+    if(!user){
+        return res.status(400).send('User not found');
+    }
+    try {
+        const checkIns = await CheckIn.find({ user: req.params.id })
+        
+        res.status(200).json(checkIns);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 module.exports = router;
