@@ -72,7 +72,7 @@ router.get('/:id', async (req, res) => {
 router.get('/', async (req, res) => {
     
     try {
-        const checkIns = await CheckIn.find();
+        const checkIns = await CheckIn.find().populate('user', 'firstName lastName');
         res.status(200).json(checkIns);
     } catch (err) {
         res.status(500).json(err);
