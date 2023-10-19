@@ -74,7 +74,17 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
- 
+
+// gett all the payments
+router.get('/', async (req, res) => {
+    
+    try {
+        const payments = await Payment.find().populate('userId', 'firstName lastName').populate('planId');
+        res.status(200).json(payments);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 module.exports = router;
