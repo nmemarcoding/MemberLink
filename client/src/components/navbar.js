@@ -24,8 +24,9 @@ const Navbar = () => {
                 <div className="hidden md:flex space-x-5 items-center">
                     <Link to="/" className="text-lg font-medium">Hi,{userInfo.firstName}</Link>
                     <Link to="/membership" className="text-lg font-medium">Membership</Link> {/* wrap in Link component */}
+                    <Link to="/paymenthistory" className="text-lg font-medium">Payment History</Link> {/* wrap in Link component */}
                     <Link to="/checkinhistory" className="text-lg font-medium">Check-in History</Link> {/* wrap in Link component */}
-                    <Link to="admincheckinhistory" className="text-lg font-medium">Member Check-in History</Link> {/* wrap in Link component */}
+                   
                     <button onClick={handleSignOut} className="bg-red-600 px-5 py-2 rounded-full hover:bg-red-700 transition duration-300 text-lg font-medium">Sign Out</button>
                 </div>
                 <div className="md:hidden flex items-center">
@@ -38,10 +39,11 @@ const Navbar = () => {
             </div>
             {isOpen && (
                 <div className="md:hidden flex flex-col space-y-4 mt-5">
-                    <span className="text-lg font-medium">Hi,{userInfo.firstName}</span>
+                    <Link to="/" className="text-lg font-medium">Hi,{userInfo.firstName}</Link>
                     <Link to="/membership" className="text-lg font-medium">Membership</Link> {/* wrap in Link component */}
+                    <Link to="/paymenthistory" className="text-lg font-medium">Payment History</Link> {/* wrap in Link component */}
                     <Link to="/checkinhistory" className="text-lg font-medium">Check-in History</Link> {/* wrap in Link component */}
-                    <Link to="admincheckinhistory" className="text-lg font-medium">Member Check-in History</Link> {/* wrap in Link component */}
+                   
                     <button onClick={handleSignOut} className="bg-red-600 px-5 py-2 rounded-full hover:bg-red-700 transition duration-300 text-lg font-medium">Sign Out</button>
                 </div>
             )}

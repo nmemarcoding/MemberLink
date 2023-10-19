@@ -7,6 +7,7 @@ import CheckinHistoryPage from './pages/checkinHistoryPage/checkinHistoryPage';
 import AdminMemberCheckInPage from './pages/adminMemberCheckInPage/adminMemberCheckInPage';
 import AdminDashboardPage from './pages/adminDashboardPage/adminDashboardPage';
 import AdminCheckinHistoryPage from './pages/adminCheckinHistoryPage/adminCheckinHistoryPage';
+import Paymenthistory from './pages/paymenthistory/paymenthistory';
 function App() {
 
   
@@ -26,6 +27,7 @@ function App() {
               <Route path="/adminmembercheckin" element={<AdminMemberCheckInPage/>}/>
               <Route path="/admindashboard" element={<AdminDashboardPage/>}/>
               <Route path="/admincheckinhistory" element={<AdminCheckinHistoryPage/>}/>
+              <Route path="/paymenthistory" element={<Paymenthistory/>}/>
             </Routes>
           </div>
         </Router>
