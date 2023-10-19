@@ -8,6 +8,7 @@ import AdminMemberCheckInPage from './pages/adminMemberCheckInPage/adminMemberCh
 import AdminDashboardPage from './pages/adminDashboardPage/adminDashboardPage';
 import AdminCheckinHistoryPage from './pages/adminCheckinHistoryPage/adminCheckinHistoryPage';
 import Paymenthistory from './pages/paymenthistory/paymenthistory';
+import AdminUsersPayments from './pages/adminUsersPayments/adminUsersPayments';
 function App() {
 
   
@@ -28,6 +29,7 @@ function App() {
               <Route path="/admindashboard" element={<AdminDashboardPage/>}/>
               <Route path="/admincheckinhistory" element={<AdminCheckinHistoryPage/>}/>
               <Route path="/paymenthistory" element={<Paymenthistory/>}/>
+              <Route path="/memberPayments" element={<AdminUsersPayments/>}/>
             </Routes>
           </div>
         </Router>
