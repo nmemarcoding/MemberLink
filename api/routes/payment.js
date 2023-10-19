@@ -57,6 +57,23 @@ router.post('/create', async(req, res) => {
     }
 }
 );
+
+// get all the payment by user id
+router.get('/:id', async (req, res) => {
+    if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+        return res.status(400).send('Invalid id');
+    }
+    const user = await User.findById(req.params.id);
+    if(!user){
+        return res.status(400).send('User not found');
+    }
+    try {
+        const payments = await Payment.find({ userId: req.params.id }).populate('planId');
+        res.status(200).json(payments);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
  
 
 
