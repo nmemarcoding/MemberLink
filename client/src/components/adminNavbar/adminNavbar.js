@@ -51,6 +51,9 @@ export default function AdminNavbar() {
                             <a href="/memberPayments" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
                                 Member Payment History
                             </a>
+                            <a href="/adminMembershipsDetails" className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
+                                Memberships Details
+                            </a>
                             <button onClick={handleSignOut} className="text-sm font-medium px-3 py-2 rounded-md hover:bg-gray-700 hover:text-white">
                                 Sign Out
                             </button>
@@ -73,6 +76,9 @@ export default function AdminNavbar() {
                         </a>
                         <a href="/memberPayments" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
                             Member Payment History
+                        </a>
+                        <a href="/adminMembershipsDetails" className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
+                            Memberships Details
                         </a>
                         <button onClick={handleSignOut} className="text-base font-medium block px-3 py-2 rounded-md text-white bg-gray-900">
                             Sign Out
