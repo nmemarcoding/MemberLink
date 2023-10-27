@@ -4,7 +4,7 @@ Welcome to MemberLink, a comprehensive membership management application designe
 
 Live Link([https://membaerlink.web.app](https://membaerlink.web.app))
 <!-- You can replace the below image link with an actual screenshot of your application -->
-<img width="815" alt="MemberLink Screenshot" src="https://github.com/nmemarcoding/MemberLink/assets/screenshot.png">
+<img width="794" alt="Screen Shot 2023-10-27 at 12 11 38 PM" src="https://github.com/nmemarcoding/MemberLink/assets/94582549/e68b8ad3-8504-4c32-9719-cad83b0cb627">
 
 ## :star: Features
 
