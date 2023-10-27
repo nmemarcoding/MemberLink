@@ -2,7 +2,7 @@
 
 Welcome to MemberLink, a comprehensive membership management application designed for clubs and organizations. It allows users to purchase memberships, while administrators can manage and check in members.
 
-Live Link([https://github.com/nmemarcoding/MemberLink](https://membaerlink.web.app))
+Live Link([https://membaerlink.web.app](https://membaerlink.web.app))
 <!-- You can replace the below image link with an actual screenshot of your application -->
 <img width="815" alt="MemberLink Screenshot" src="https://github.com/nmemarcoding/MemberLink/assets/screenshot.png">
 
