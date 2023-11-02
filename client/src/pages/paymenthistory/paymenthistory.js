@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
 import { publicRequest } from '../../hooks/requestMethods.js';
 import store from '../../store';
-import useAdminAuth from '../../hooks/adminAuth.js';
+import useAuthRedirect from '../../hooks/useAuthRedirect';
 
 export default function PaymentHistory() {
-    useAdminAuth();
+    useAuthRedirect();
     const userInfo = store.getState().userInf;
     const [payments, setPayments] = useState([]);
 
