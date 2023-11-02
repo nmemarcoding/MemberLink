@@ -9,15 +9,14 @@ export default function AdminMemberCheckInPage() {
     const [membershipNumber, setMembershipNumber] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [userInfo, setUserInfo] = useState(null);
+    const [loading, setLoading] = useState(false); // Added loading state
 
     const handleMembershipNumberChange = (event) => {
         setMembershipNumber(event.target.value);
-        console.log(membershipNumber);
     };
 
     const handlePhoneNumberChange = (event) => {
         setPhoneNumber(event.target.value);
-        console.log(phoneNumber);
     };
 
     const handleCheckInSubmit = (event) => {
@@ -28,19 +27,21 @@ export default function AdminMemberCheckInPage() {
             return;
         }
 
+        setLoading(true); // Set loading to true before making the request
+
         publicRequest().post('/checkin', { membershipNumber, phoneNumber })
             .then((response) => {
-                console.log(response);
                 alert('Checked in successfully');
                 setMembershipNumber('');
                 setPhoneNumber('');
                 setUserInfo(response.data);
             })
             .catch((error) => {
-                console.log(error);
                 alert(error.response.data || 'An error occurred');
+            })
+            .finally(() => {
+                setLoading(false); // Set loading back to false once the request is completed
             });
-
     };
 
     const handleClosePopup = () => {
@@ -74,7 +75,9 @@ export default function AdminMemberCheckInPage() {
                         />
                     </div>
                     <div className="text-center">
-                        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Check In</button>
+                        <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600" disabled={loading}>
+                            {loading ? 'Loading...' : 'Check In'} {/* Show spinner text when loading */}
+                        </button>
                     </div>
                 </form>
             </div>
